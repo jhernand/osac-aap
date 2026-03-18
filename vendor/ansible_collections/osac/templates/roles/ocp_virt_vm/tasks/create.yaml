@@ -7,9 +7,7 @@
 # default_arg_specs: default values for arguement_specs
 ---
 - name: Include get remote cluster kubeconfig
-  ansible.builtin.include_role:
-    name: common
-    tasks_from: get_remote_cluster_kubeconfig
+  ansible.builtin.include_tasks: get_remote_cluster_kubeconfig.yaml
 
 - name: Merge template defaults into template_parameters
   ansible.builtin.set_fact:
@@ -25,6 +23,7 @@
     vm_ssh_key: "{{ compute_instance.spec.sshKey | default('') }}"
     vm_user_data_secret_ref: "{{ (compute_instance.spec.userDataSecretRef | default({})).name | default('') }}"
     vm_additional_disks: "{{ compute_instance.spec.additionalDisks | default([]) }}"
+    vm_boot_disk_storage_class: "{{ compute_instance.spec.bootDisk.storageClass | default('') }}"
 
 - name: Validate exposed_ports format
   ansible.builtin.assert:
@@ -66,6 +65,18 @@
         - name: root-disk
           dataVolume:
             name: "{{ compute_instance_name }}-root-disk"
+
+- name: Add GPU passthrough device to template spec if required
+  ansible.builtin.set_fact:
+    vm_template_spec: "{{ vm_template_spec | combine(gpu_patch, recursive=True, list_merge='append') }}"
+  vars:
+    gpu_patch:
+      domain:
+        devices:
+          hostDevices:
+            - name: gpu
+              deviceName: "{{ gpu_device_name }}"
+  when: gpu_device_name | length > 0
 
 - name: Copy user-data secret to VM namespace and add cloud-init disk to template spec
   when: vm_user_data_secret_ref | length > 0
@@ -169,19 +180,31 @@
                 propagationMethod:
                   noCloud: {}
 
-- name: Require non-empty tenant StorageClass
-  ansible.builtin.assert:
-    that: tenant_storage_class_name | length > 0
-    fail_msg: >-
-      ComputeInstance provisioning requires a StorageClass for the tenant.
-      tenant_storage_class_name is set but empty.
-    success_msg: "Using tenant StorageClass: {{ tenant_storage_class_name }}"
+- name: Get the all StorageClasses
+  kubernetes.core.k8s_info:
+    kubeconfig: "{{ remote_cluster_kubeconfig | default(omit) }}"
+    api_version: storage.k8s.io/v1
+    kind: StorageClass
+  register: storage_classes
 
-- name: Set storage_class from tenant StorageClass
+- name: Set default StorageClass
   ansible.builtin.set_fact:
-    storage_class: "{{ tenant_storage_class_name }}"
+    storage_class: "{{ item.metadata.name }}"
+  loop: "{{ storage_classes.resources }}"
+  when:
+    - "'storageclass.kubernetes.io/is-default-class' in item.metadata.annotations"
+    - item.metadata.annotations['storageclass.kubernetes.io/is-default-class'] | bool
 
-- name: Using tenant storage_class
+- name: Override storage_class from spec, env var, or keep cluster default
+  ansible.builtin.set_fact:
+    storage_class: >-
+      {{
+        vm_boot_disk_storage_class
+        | default(lookup('env', 'OSAC_VM_OPERATIONS_STORAGE_CLASS'), true)
+        | default(storage_class, true)
+      }}
+
+- name: Using vmaas_storage_class
   ansible.builtin.debug:
     var: storage_class
 
@@ -229,7 +252,7 @@
           resources:
             requests:
               storage: "{{ item.sizeGiB }}Gi"
-          storageClassName: "{{ storage_class }}"
+          storageClassName: "{{ item.storageClass | default(storage_class) }}"
     state: present
   loop: "{{ vm_additional_disks }}"
   loop_control:

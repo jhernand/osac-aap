@@ -127,104 +127,6 @@
    "format": 1
   },
   {
-   "name": "roles/common",
-   "ftype": "dir",
-   "chksum_type": null,
-   "chksum_sha256": null,
-   "format": 1
-  },
-  {
-   "name": "roles/common/tasks",
-   "ftype": "dir",
-   "chksum_type": null,
-   "chksum_sha256": null,
-   "format": 1
-  },
-  {
-   "name": "roles/common/tasks/get_remote_cluster_kubeconfig.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "93b610ceeba60d796a9eb2bd6b295337e67cb8751090cb37f5cbf45cfd011470",
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net",
-   "ftype": "dir",
-   "chksum_type": null,
-   "chksum_sha256": null,
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/defaults",
-   "ftype": "dir",
-   "chksum_type": null,
-   "chksum_sha256": null,
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/defaults/main.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "73d901ae9fbf2e6ee654db32e26acabbffd0a52ebda3b7e5efb51dd23448f229",
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/meta",
-   "ftype": "dir",
-   "chksum_type": null,
-   "chksum_sha256": null,
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/meta/argument_specs.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "e808bb53ec2b4519727ca9965e36ff2d0d2913bfea9c3331c7e5728ca149c70d",
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/meta/osac.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "76225dadf41d15fda1501990b171bed3e98430b68be0ef9fb79ddd7b74e303d8",
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/tasks",
-   "ftype": "dir",
-   "chksum_type": null,
-   "chksum_sha256": null,
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/tasks/create_subnet.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "93b971b242419709ae2903ece0aa9b5325b8b25a2f4eef193bd60155a01a9f95",
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/tasks/create_virtual_network.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "010c0bc7e852bc9fda313f2e3928dc7a0f4808709719eec6a5561ad62cae4666",
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/tasks/delete_subnet.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "7be9767a0cb825d190303f94b53a216d9391e6b506fe7ba7a2db4b9955995efa",
-   "format": 1
-  },
-  {
-   "name": "roles/cudn_net/tasks/delete_virtual_network.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "3423fc2a9237d79fa7c64be7069111ee5ae5b2b25293f4446d6e1f8395077149",
-   "format": 1
-  },
-  {
    "name": "roles/ocp_4_17_small",
    "ftype": "dir",
    "chksum_type": null,
@@ -382,7 +284,7 @@
    "name": "roles/ocp_virt_vm/defaults/main.yaml",
    "ftype": "file",
    "chksum_type": "sha256",
-   "chksum_sha256": "0ab6b6a2363b9f05c72ab4dbd3b2d659ebb552cd0c86824155fed8fbfbee5094",
+   "chksum_sha256": "b2078c710bb38b270ed713f50c4e161258f084cf5c0de7a2dc3a4603cb3e9336",
    "format": 1
   },
   {
@@ -393,17 +295,17 @@
    "format": 1
   },
   {
-   "name": "roles/ocp_virt_vm/meta/argument_specs.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "53d313f604b459cc70e7ac9754ea957a5e407c6ed0f224a63e74ea04af2f0b97",
-   "format": 1
-  },
-  {
    "name": "roles/ocp_virt_vm/meta/osac.yaml",
    "ftype": "file",
    "chksum_type": "sha256",
    "chksum_sha256": "79d14a39bc94684699c0405a131b20b3230ed51f3efaf8aa81e99aab99e76a48",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm/meta/argument_specs.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "2d18ad2981b124e2ecdde02da8f3753406617657c38034f47bae3577758e0835",
    "format": 1
   },
   {
@@ -414,17 +316,87 @@
    "format": 1
   },
   {
-   "name": "roles/ocp_virt_vm/tasks/create.yaml",
-   "ftype": "file",
-   "chksum_type": "sha256",
-   "chksum_sha256": "ab6543e94007bd3d9e518843ae3b921469c235144d491f32afb3d03bb6d96840",
-   "format": 1
-  },
-  {
    "name": "roles/ocp_virt_vm/tasks/delete.yaml",
    "ftype": "file",
    "chksum_type": "sha256",
-   "chksum_sha256": "b862016f126878320c714d39966ed811b2f9b101868b08a13a9ef3b6b461606b",
+   "chksum_sha256": "6c2fc5b9ecf1c48a2cd0ed9d4ad52af01bb1f9614e86a05ddee8ab2777fde74d",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm/tasks/get_remote_cluster_kubeconfig.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "8d7e296e9535f69064543f97597fb1e91355d5213b4894b491ec1c9a78f3398b",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm/tasks/create.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4da41a22bb31d969b6052cc3003dcb04fa9ecbdd3263b264f17cd671d1c8fc07",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/defaults",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/defaults/main.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "0ab6b6a2363b9f05c72ab4dbd3b2d659ebb552cd0c86824155fed8fbfbee5094",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/meta",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/meta/argument_specs.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "53d313f604b459cc70e7ac9754ea957a5e407c6ed0f224a63e74ea04af2f0b97",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/meta/osac.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "3eac371140a8661050513c670cf9cc438af5074d5d758d268c6418510858db5e",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/tasks",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/tasks/create.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "cbd7a23680a896f409f3f5a9472aa66db95494bcf10722c36b0abcee3da48e7a",
+   "format": 1
+  },
+  {
+   "name": "roles/ocp_virt_vm_with_nvidia_ga100/tasks/delete.yaml",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "4d14aa14edb1383ec99c4dd586ee0e5deee30c0ea41fe0bc7943c211b9b8ebd0",
    "format": 1
   }
  ],
