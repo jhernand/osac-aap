@@ -48,10 +48,7 @@ jobs:
           python-version-file: "pyproject.toml"
 
       - name: Install the project
-        run: uv sync --locked --all-extras --group development
-
-      - name: Install Python dependencies for tests
-        run: pip install kubernetes openstacksdk
+        run: uv sync --locked --all-extras --all-groups
 
       - name: Install kind
         uses: helm/kind-action@v1

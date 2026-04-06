@@ -10,10 +10,6 @@ echo "=== Setting up test environment ==="
 echo "Cleaning up any existing test cluster..."
 kind delete cluster --name osac-test 2>/dev/null || true
 
-# 0.5. Install required Python libraries
-echo "Installing required Python libraries..."
-pip install --user kubernetes openstacksdk 2>/dev/null || pip3 install --user kubernetes openstacksdk
-
 # 1. Create kind cluster
 echo "Creating kind cluster..."
 kind create cluster --name osac-test --wait 5m
