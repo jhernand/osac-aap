@@ -1,0 +1,5 @@
+title: VM with NVIDIA GV100 GPU
+description: >
+  Virtual machine with an NVIDIA GV100 GPU passthrough.
+
+template_type: compute_instance
